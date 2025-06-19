@@ -1,9 +1,9 @@
-import React, { useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Slider from "react-slick";
-import '../../css/styles/style.css';
 import Skeleton from "../UI/Skeleton";
+import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import Item from "../Items/Item";
 
 
 const NewItems = () => {
@@ -105,11 +105,11 @@ const NewItems = () => {
       const now = Date.now();
       const newCountdowns = {};
 
-      items.forEach((item, idx) => {
+      items.forEach((item) => {
         if (item.expiryDate) {
           const expiryTime = new Date(item.expiryDate).getTime();
           const diffSeconds = Math.floor((expiryTime - now)/1000);
-          newCountdowns[idx] = diffSeconds > 0 ? diffSeconds : 0;
+          newCountdowns[item.id] = diffSeconds > 0 ? diffSeconds : 0;
         }
       })
       setCountdowns(newCountdowns);
@@ -137,75 +137,13 @@ const NewItems = () => {
                 ))
               ) :(
                 <Slider {...settings}>
-          {items.map((item, id) => {
-            const timeLeft = countdowns[id] ?? null;
-            const hours = Math.floor(timeLeft/ 3600);
-            const minutes = Math.floor ((timeLeft % 3600) / 60);
-            const seconds = timeLeft % 60;
-
-            return(
-            <div key={id}>
-              <div className="nft__item">
-                <div className="author_list_pp">
-                  <Link
-                    to="/author"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Creator: Monica Lucas"
-                  >
-                    <img className="lazy" src={item.authorImage} alt="" />
-                    <i className="fa fa-check"></i>
-                  </Link>
-                </div>
-                {timeLeft !== null && timeLeft > 0 && (
-                  <div className="de_countdown">
-                    <span className="timer__hours">{hours}hr </span>
-                    <span className="timer__minutes">{minutes}min </span>
-                    <span className="timer__seconds">{seconds}s</span>
-                </div>
-              )}
-                
-                <div className="nft__item_wrap">
-                  <div className="nft__item_extra">
-                    <div className="nft__item_buttons">
-                      <button>Buy Now</button>
-                      <div className="nft__item_share">
-                        <h4>Share</h4>
-                        <a href="" target="_blank" rel="noreferrer">
-                          <i className="fa fa-facebook fa-lg"></i>
-                        </a>
-                        <a href="" target="_blank" rel="noreferrer">
-                          <i className="fa fa-twitter fa-lg"></i>
-                        </a>
-                        <a href="">
-                          <i className="fa fa-envelope fa-lg"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Link to="/item-details">
-                    <img
-                      src={item.nftImage}
-                      className="lazy nft__item_preview"
-                      alt=""
-                    />
-                  </Link>
-                </div>
-                <div className="nft__item_info">
-                  <Link to="/item-details">
-                    <h4>{item.title}</h4>
-                  </Link>
-                  <div className="nft__item_price">{item.price}</div>
-                  <div className="nft__item_like">
-                    <i className="fa fa-heart"></i>
-                    <span>{item.likes}</span>
-                  </div>
-                </div>
-              </div>
+          {items.map((item) => (
+            <div key={item.id}
+            style={{ padding: '15px'}}>
+              <Item item={item} countdown={countdowns[item.id]}/>
             </div>
-            );
-            })}
+          )
+            )}
           </Slider>
           )}
         </div>
