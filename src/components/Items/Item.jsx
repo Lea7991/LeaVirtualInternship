@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Item = ({ item, countdown }) => {
+const Item = ({ item, countdown, author }) => {
 
   const formatTime = (value) => String(value).padStart(2, "0");
 
@@ -13,7 +13,7 @@ const Item = ({ item, countdown }) => {
     <div className="nft__item">
       <div className="author_list_pp">
         <Link
-          to="/author"
+          to={`/author/${author.id}`}
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           title={`Creator: ${item.authorName}`}
