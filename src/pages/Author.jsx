@@ -7,26 +7,29 @@ import Skeleton from "../components/UI/Skeleton";
 
 const Author = () => {
   const { id } = useParams();
+  console.log( id)
   const [author, setAuthor] = useState(null)
   const [loading, setLoading] = useState(true)
 
   async function getAuthor() {
-    setLoading(true);
-    try{
-      const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${id}`)
-      console.log('author id:', id)
-      setAuthor(data);
-    } catch(err) {
-      console.error("Error fetching author", err)
-    } finally {
-      setLoading(false)
-    }
+  if (!id) return;  // Optional: guard clause if id is undefined/null
+  setLoading(true);
+  try {
+    const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${id}`);
+    console.log(data);
+    setAuthor(data);
+  } catch(err) {
+    console.error("Error fetching author", err);
+  } finally {
+    setLoading(false);
   }
+}
 
   useEffect(() => {
-    getAuthor()
-  },[id])
-
+  if (id) {
+    getAuthor();
+  }
+}, [id]);
   
 
   return (
@@ -45,6 +48,7 @@ const Author = () => {
           <section aria-label="section">
           <div className="container">
             <div className="row">
+              <div className="col-md-12">
               {loading ? (
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
@@ -81,7 +85,7 @@ const Author = () => {
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
                     <div className="profile_avatar">
-                      <Link to={`/author/${author.id}`}>
+                      <Link to="/author">
                       <img src={author.authorImage} alt="" />
                       </Link>
                       <i className="fa fa-check"></i>
@@ -110,6 +114,7 @@ const Author = () => {
                 </div>
               </div>
                )}
+               </div>
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
                   <AuthorItems author={author} />

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
 
-const TopSellers = ({ author }) => {
+const TopSellers = () => {
   const [sellers, setSellers] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -50,7 +50,7 @@ const TopSellers = ({ author }) => {
               ): (sellers.map((seller, id) => (
                 <li key={id}>
                   <div className="author_list_pp">
-                    <Link to={`/author/${author.id}`}>
+                    <Link to="/author">
                       <img
                         className="lazy pp-author"
                         src={seller.authorImage}
@@ -60,7 +60,7 @@ const TopSellers = ({ author }) => {
                     </Link>
                   </div>
                   <div className="author_list_info">
-                    <Link o={`/author/${author.id}`}>Monica Lucas</Link>
+                    <Link to="/author">Monica Lucas</Link>
                     <span>{seller.price} ETH</span>
                   </div>
                 </li>)

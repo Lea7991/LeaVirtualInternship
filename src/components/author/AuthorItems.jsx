@@ -2,18 +2,18 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 
 const AuthorItems = ({ author }) => {
-  if (!author || !author.nftCollection) return null; 
+  if (!author || !author.nftCollection) return null;
 
   return (
     <div className="de_tab_content">
       <div className="tab-1">
         <div className="row">
-          {author.map((author, id) => (
+          {author.nftCollection.map((item, id) => (
             <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={id}>
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link to={`/author/${author.id}`}>
-                    <img className="lazy" src={author.authorImage} alt="" />
+                    <img className="lazy" src={item.authorImage} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
@@ -37,7 +37,7 @@ const AuthorItems = ({ author }) => {
                   </div>
                   <Link to="/item-details">
                     <img
-                      src={author.nftImage}
+                      src={item.nftImage}
                       className="lazy nft__item_preview"
                       alt=""
                     />
@@ -45,12 +45,12 @@ const AuthorItems = ({ author }) => {
                 </div>
                 <div className="nft__item_info">
                   <Link to="/item-details">
-                    <h4>{author.title}</h4>
+                    <h4>{item.title}</h4>
                   </Link>
                   <div className="nft__item_price">{author.price} ETH</div>
                   <div className="nft__item_like">
                     <i className="fa fa-heart"></i>
-                    <span>{author.likes}</span>
+                    <span>{item.likes}</span>
                   </div>
                 </div>
               </div>

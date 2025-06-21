@@ -9,7 +9,7 @@ import Skeleton from "../UI/Skeleton";
 
 
 
-const HotCollections = ({ author }) => {
+const HotCollections = () => {
   const [loading, setLoading] = useState(true);
   const [collections, setCollections] = useState([]);
 
@@ -138,7 +138,7 @@ const HotCollections = ({ author }) => {
                         </Link>
                       </div>
                       <div className="nft_coll_pp">
-                        <Link to={`/author/${author.id}`}>
+                        <Link to="/author">
                           <img
                             className="lazy pp-coll"
                             src={collection.authorImage}
