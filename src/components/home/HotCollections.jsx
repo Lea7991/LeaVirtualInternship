@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
 import axios from "axios";
 import Slider from "react-slick";
 import "../../css/styles/style.css";
@@ -129,7 +127,7 @@ const HotCollections = () => {
                   <div style={{ padding: "15px" }}>
                     <div className="nft_coll">
                       <div className="nft_wrap">
-                        <Link to="/item-details">
+                        <Link to={`/item-details/${collection.nftId}`}>
                           <img
                             src={collection.nftImage}
                             className="lazy img-fluid"
