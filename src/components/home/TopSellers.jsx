@@ -33,6 +33,7 @@ const TopSellers = () => {
             </div>
           </div>
           <div className="col-md-12">
+            <div data-aos="fade-up">
             <ol className="author_list">
 
               {loading ? (
@@ -69,6 +70,7 @@ const TopSellers = () => {
               ))
             }
             </ol>
+          </div>
           </div>
         </div>
       </div>

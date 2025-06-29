@@ -1,8 +1,24 @@
 import React, { useEffect } from "react";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
+import { useLocation } from "react-router-dom";
+import AOS from 'aos';
 
 const Explore = () => {
+   const location = useLocation();
+  
+    useEffect(() => {
+      AOS.init({ duration: 1000, once: true });
+    }, []);
+  
+    useEffect(() => {
+      AOS.refresh(); 
+    }, [location.pathname]);
+  
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
