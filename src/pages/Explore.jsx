@@ -7,6 +7,7 @@ import AOS from 'aos';
 const Explore = () => {
   //Merge Practice
    const location = useLocation();
+  
     useEffect(() => {
       AOS.init({ duration: 1000, once: true });
     }, []);
