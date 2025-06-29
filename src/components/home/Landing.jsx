@@ -16,6 +16,7 @@ const Landing = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6">
+              <div data-aos="fade-up" data-aos-delay="1000">
               <div className="spacer-single"></div>
               <h6>
                 <span className="text-uppercase id-color-2">
@@ -30,15 +31,17 @@ const Landing = () => {
                 interchangeable
               </p>
               <div className="spacer-10"></div>
+
               <Link className="btn-main lead" to="/explore">
                 Explore
               </Link>
               <div className="mb-sm-30"></div>
-            </div>
-            <div className="col-md-6 xs-hide">
+              </div>
+              </div>
+            <div className="col-md-6 xs-hide" data-aos="fade-left" data-aos-duration="2000">
               <img src={NFT} className="lazy img-fluid" alt="" />
             </div>
-          </div>
+           </div>
         </div>
       </div>
     </section>

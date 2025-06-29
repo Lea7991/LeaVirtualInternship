@@ -136,6 +136,7 @@ const NewItems = () => {
                   </div>
                 ))
               ) :(
+                <div data-aos="fade-up">
                 <Slider {...settings}>
           {items.map((item) => (
             <div key={item.id}
@@ -145,6 +146,7 @@ const NewItems = () => {
           )
             )}
           </Slider>
+          </div>
           )}
         </div>
       </div>

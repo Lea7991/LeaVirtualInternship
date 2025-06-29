@@ -111,10 +111,12 @@ const ExploreItems = () => {
       </div>
 
       <div className="row">
+        <div data-aos="fade-up">
         <div className="col-md-12 text-center">
           <Link to="#" id="loadmore" className="btn-main lead" onClick={loadMore}>
             Load more
           </Link>
+        </div>
         </div>
       </div>
     </section>

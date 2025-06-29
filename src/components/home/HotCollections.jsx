@@ -121,6 +121,7 @@ const HotCollections = () => {
               </div>
             ))
           ) : (
+            <div data-aos="fade-up">
             <Slider {...settings}>
               {collections.map((collection, id) => (
                 <div key={id}>
@@ -156,6 +157,7 @@ const HotCollections = () => {
                 </div>
               ))}
             </Slider>
+            </div>
           )}
         </div>
       </div>

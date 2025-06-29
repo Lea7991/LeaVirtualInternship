@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import EthImage from "../images/ethereum.svg";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import AOS from 'aos';
 
 const ItemDetails = () => {
   const [item, setItem] = useState(null)
@@ -27,10 +28,18 @@ const ItemDetails = () => {
     fetchItemDetails();
   }, [nftId]);
 
-
+  useEffect(() => {
+      AOS.init({ duration: 1000, once: true });
+    }, []);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   if (loading || !item) {if (loading || !item) {
   return (

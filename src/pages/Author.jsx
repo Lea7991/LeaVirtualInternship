@@ -4,6 +4,8 @@ import AuthorItems from "../components/author/AuthorItems";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../components/UI/Skeleton";
+import { useLocation } from "react-router-dom";
+import AOS from 'aos';
 
 const Author = () => {
   const { authorId } = useParams();
@@ -11,6 +13,7 @@ const Author = () => {
   const [loading, setLoading] = useState(true);
   const [isFollowing, setIsFollowing] = useState(false);
   const [followersCount, setFollowersCount] = useState(0);
+  const location = useLocation();
 
   useEffect(() => {
     const getAuthor = async () => {
@@ -46,6 +49,23 @@ const Author = () => {
     } 
     setIsFollowing(!isFollowing);
   }
+
+    
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
+  useEffect(() => {
+    AOS.refresh(); 
+  }, [location.pathname]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div id="wrapper">
