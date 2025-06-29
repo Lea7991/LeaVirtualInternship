@@ -6,7 +6,7 @@ import AOS from 'aos';
 
 const Explore = () => {
    const location = useLocation();
-  
+    //FROM MAIN!! DO NOT REMOVE
     useEffect(() => {
       AOS.init({ duration: 1000, once: true });
     }, []);
